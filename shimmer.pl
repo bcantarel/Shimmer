@@ -1,4 +1,7 @@
 #!/usr/bin/perl -w
+
+eval 'exec /usr/bin/perl -w -S $0 ${1+"$@"}'
+    if 0; # not running under some shell
 #########################################################
 # Author:	Nancy F. Hansen
 # Program:	"Shimmer"
@@ -536,6 +539,7 @@ sub write_vs_file {
             $ref = uc $ref;
             my $normal_covg = $norm1_count + $norm2_count;
             my $tumor_covg = $tumor1_count + $tumor2_count;
+	    next unless ($normal_covg && $tumor_covg);
             my $normal_ratio = $norm2_count/$normal_covg;
             my $tumor_ratio = $tumor2_count/$tumor_covg;
             my $lfe = $pos - 1;
